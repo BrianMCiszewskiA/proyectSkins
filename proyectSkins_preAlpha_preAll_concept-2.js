@@ -6,6 +6,15 @@ class Set{
         this.name = name;
         allSets.push(this)
     }
+
+    addSkin(skin){
+        if(!hasSkin(skin)){
+            this.skins.push(skin)
+        }
+    }
+    hasSkin(skin){
+        return this.skins.includes(skin)
+    }
     hasUser(user){
         return user.sets.includes(this)
     }
@@ -20,6 +29,7 @@ class Skin{
         this.set = set
         this.image = image
         this.icon = icon
+        set.addSkin(this)
     }
 }
 
