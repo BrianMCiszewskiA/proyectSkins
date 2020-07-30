@@ -1,7 +1,10 @@
+const allSets = []
+
 class Set{
-    constructor(skins,name,users){
+    constructor(skins,name){
         this.skins = skins;
         this.name = name;
+        allSets.push(this)
     }
     hasUser(user){
         return user.sets.includes(this)
@@ -40,4 +43,11 @@ class User{
             this.sets.push(set)
         }
     }
+    skinsOfSet(thisSet){
+        this.skins.filter(s=>s.set==thisSet)
+    }
+}
+
+function filterByUsers(users){
+    return allSets.filter(s => s.hasUsers(users))
 }
