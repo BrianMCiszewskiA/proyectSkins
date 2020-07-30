@@ -2,44 +2,42 @@ class Set{
     constructor(skins,name,users){
         this.skins = skins;
         this.name = name;
-        this.users = users;
-    }
-
-    addUser(user){
-        if (!this.hasUser(user)){
-            this.users.push(user)
-        }
     }
     hasUser(user){
-        return this.users.includes(user)
+        return user.sets.includes(this)
     }
     hasUsers(users){
-        return this.users.every(u=>self.hasUser(u))
+        return users.every(u=>self.hasUser(u))
     }
 }
 
 class Skin{
-    constructor(name, set){
+    constructor(name, set, image, icon){
         this.name = name
         this.set = set
-    }
-    addUserToSet(user){
-        this.set.addUser(user)
+        this.image = image
+        this.icon = icon
     }
 }
 
 class User{
-    constructor(name, skins){
+    constructor(name, skins, sets){
         this.name = name
         this.skins = skins
+        this.sets = sets
     }
     addSkin(skin){
         if (!this.hasSkin(skin)){
             this.skins.push(skin)
-            skin.set.users.push(this)
+            this.addSet(skin.set)
         }
     }
     hasSkin(skin){
         return this.skins.includes(skin)
+    }
+    addSet(set){
+        if (!this.hasSet(set)){
+            this.sets.push(set)
+        }
     }
 }
