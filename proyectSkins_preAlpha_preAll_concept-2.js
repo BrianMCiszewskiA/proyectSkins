@@ -38,6 +38,9 @@ class User{
     hasSkin(skin){
         return this.skins.includes(skin)
     }
+    hasSet(set){
+        return this.sets.includes(set)
+    }
     addSet(set){
         if (!this.hasSet(set)){
             this.sets.push(set)
